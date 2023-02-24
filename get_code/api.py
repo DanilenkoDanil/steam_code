@@ -2,7 +2,6 @@ import requests
 import time
 from hashlib import sha256
 import json
-import os
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gift_bot.settings")
 # import django
 # django.setup()
