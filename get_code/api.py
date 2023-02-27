@@ -26,9 +26,7 @@ def check_code(code: str, guid: str = '22882862E75441D5B0DC400A77F4972D', seller
     }
 
     response = requests.post('https://api.digiseller.ru/api/apilogin', json=data, headers=headers)
-    print(response.content)
     token_json = json.loads(response.content.decode('utf8'))
-    print(token_json)
     try:
         token = token_json['token']
     except KeyError:
