@@ -78,7 +78,7 @@ def index(request):
                                 'amount': amount_num
                             }
                         )
-                key = Key.objects.create(key=code, amount=amount_num)
+                key = Key.objects.create(key=uniquecode, amount=amount_num)
                 for steam_code in steam_code_list:
                     steam_code.key = key
                     steam_code.save()
