@@ -31,10 +31,34 @@ def get_code_list(str_list: str) -> list:
     return final_list
 
 
-# Поправь amount
 def index(request):
     uniquecode = request.GET.get('uniquecode')
-    key = get_key(uniquecode)
+    if uniquecode is None:
+        final_code_str = "Произошла ошибка! Обратитесь к продавцу"
+        return render(
+            request,
+            'get_code/account.html',
+            {
+                'key': uniquecode,
+                'code': final_code_str,
+                'amount': 0
+            }
+        )
+
+    try:
+        key = get_key(uniquecode)
+    except Exception as e:
+        print(e)
+        final_code_str = "Произошла ошибка! Обратитесь к продавцу"
+        return render(
+            request,
+            'get_code/account.html',
+            {
+                'key': uniquecode,
+                'code': final_code_str,
+                'amount': 0
+            }
+        )
     if key is False:
         for shop in get_shops():
             info = check_code(uniquecode, shop.guid, shop.seller_id)
